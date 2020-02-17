@@ -1,10 +1,13 @@
+import { uuid } from 'vue-uuid';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { uuid } from 'vue-uuid';
+import localStoragePlugin from './plugins/localStorage';
+
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [localStoragePlugin],
   state: {
     items: {
       todo: [],
@@ -15,6 +18,13 @@ export default new Vuex.Store({
     nextId: uuid.v4(),
   },
   mutations: {
+    initializeStore() {
+      const data = localStorage.getItem('todoState');
+
+      if (data) {
+        this.replaceState({ ...this.state, ...JSON.parse(data) });
+      }
+    },
     addTodo(state, item) {
       state.items.active.push({ ...item,
         id: state.nextId,
