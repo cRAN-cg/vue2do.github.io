@@ -74,34 +74,17 @@ export default new Vuex.Store({
         nextId: uuid.v4(),
       });
     },
-    modifyFilter(state, { hashTag: item, id }) {
-      // change the associated value of tag
-      const indexInArray = [...state.items.todo].findIndex(
-        i => i.id === id,
+    removeFilter(state, filter) {
+      const index = [...state.filters].findIndex(
+        item => item === filter,
       );
-      if (indexInArray > -1) {
-        const hashTagArray = [...[...state.items.todo][indexInArray].hashTags];
-        const hashTagIndex = hashTagArray.findIndex(hashTag => hashTag[item]);
-        if (hashTagIndex > -1) {
-          const hashFilterActivated = [...hashTagArray][hashTagIndex][item].activateFilter;
-          // eslint-disable-next-line max-len
-          state.items.todo[indexInArray].hashTags[hashTagIndex][item].activateFilter = !hashFilterActivated;
-
-          // if activate is true add to the filter array else splice
-
-          if (!hashFilterActivated === true) {
-            if (!state.filters || !state.filters.some(hashTag => hashTag === item)) {
-              state.filters.push(item);
-            }
-          } else {
-            const filterIndex = [...state.filters].findIndex(
-              filterName => filterName === item,
-            );
-            if (filterIndex > -1) {
-              state.filters.splice(filterIndex, 1);
-            }
-          }
-        }
+      if (index > -1) {
+        state.filters.splice(index, 1);
+      }
+    },
+    addFilter(state, { hashTag: item }) {
+      if (!state.filters.find((filter => filter === item))) {
+        state.filters.push(item);
       }
     },
   },

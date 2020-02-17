@@ -1,19 +1,26 @@
 <template>
-  <div class="utility-container">
-    <input-bar class="utility-container__input"/>
-    <menu-bar class="utility-container__menu"/>
+  <div>
+    <div class="utility-container">
+      <input-bar class="utility-container__input" />
+      <menu-bar class="utility-container__menu" />
+    </div>
+    <div>
+      <filter-container />
+    </div>
   </div>
 </template>
 
 <script>
 import InputBar from './InputBar';
 import MenuBar from './MenuBar';
+import FilterContainer from './FilterContainer';
 
 export default {
   name: 'UtilityBar',
   components: {
     'input-bar': InputBar,
     'menu-bar': MenuBar,
+    'filter-container': FilterContainer,
   },
 };
 </script>
