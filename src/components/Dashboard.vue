@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-container">
     <input-bar />
+    <menu-bar />
     <div>
       <div class="card" v-for="todo in todos" :key="todo.id">
         <todo-card :todo="todo"/>
@@ -13,12 +14,14 @@
 import { mapState } from 'vuex';
 import InputBar from './InputBar';
 import ToDoCard from './ToDoCard';
+import MenuBar from './MenuBar';
 
 export default {
   name: 'Dashboard',
   components: {
     'input-bar': InputBar,
     'todo-card': ToDoCard,
+    'menu-bar': MenuBar,
   },
   computed: mapState({
     todos: state => state.items.todo,

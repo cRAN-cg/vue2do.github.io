@@ -18,7 +18,8 @@ export default new Vuex.Store({
       state.items.active.push({ ...item, id: state.nextId });
       state.nextId = uuid.v4();
       state.items.todo = [...[...state.items.active].reverse(),
-        ...[...state.items.completed].reverse()];
+        ...[...state.items.completed].reverse(),
+      ];
     },
     removeToDo(state, selectedToDo) {
       let completedTodo;
@@ -30,11 +31,38 @@ export default new Vuex.Store({
         state.items.completed.push({
           ...completedTodo,
           completedTimeStamp: new Date(),
-          completed: true });
+          completed: true,
+        });
 
         state.items.todo = [...[...state.items.active].reverse(),
-          ...[...state.items.completed].reverse()];
+          ...[...state.items.completed].reverse(),
+        ];
       }
+    },
+    undoState(state) {
+      state.items.todo.forEach((completedToDo) => {
+        if (completedToDo.completed) {
+          // eslint-disable-next-line no-param-reassign
+          completedToDo.completed = false;
+        }
+      });
+      state.items.active = [...[...state.items.todo].sort((a, b) =>
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        new Date(a.createdTimeStamp) - new Date(b.createdTimeStamp),
+      )];
+      state.items.completed = [];
+      state.items.todo = [...[...state.items.active].reverse()];
+    },
+    resetBoard() {
+      this.replaceState({
+        items: {
+          todo: [],
+          completed: [],
+          active: [],
+        },
+        nextId: uuid.v4(),
+      });
     },
   },
 });
