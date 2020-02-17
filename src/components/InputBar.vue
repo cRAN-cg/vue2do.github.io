@@ -16,10 +16,10 @@ export default {
   },
   methods: {
     submitForm: function submitForm() {
-      debugger;
       if (this.inputText) {
         this.$store.commit('addTodo', {
-          text: this.itemText,
+          text: this.inputText,
+          timeStamp: new Date(),
         });
       }
       this.inputText = '';
