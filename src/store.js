@@ -16,5 +16,13 @@ export default new Vuex.Store({
       state.items.todo.push({ ...item, id: state.nextId });
       state.nextId = uuid.v4();
     },
+    removeToDo(state, selectedToDo) {
+      const indexInArray = [...state.items.todo].findIndex(
+        item => item.id === selectedToDo.id,
+      );
+      if (indexInArray > -1) {
+        state.items.todo.splice(indexInArray, 1);
+      }
+    },
   },
 });

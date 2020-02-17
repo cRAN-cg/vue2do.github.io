@@ -1,7 +1,7 @@
 <template>
     <div class="card todo-item">
         <div class="card-block">
-            <h5 class="card-title">
+            <h5 class="card-title" @click="removeToDo(todo)">
               {{todo.text}}
             </h5>
         </div>
@@ -13,6 +13,11 @@
 export default {
   name: 'ToDoCard',
   props: ['todo'],
+  methods: {
+    removeToDo(selectedToDo) {
+      this.$store.commit('removeToDo', selectedToDo);
+    },
+  },
 };
 </script>
 
