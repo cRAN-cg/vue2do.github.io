@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <input-bar />
     <div>
-      <div class="card" v-for="todo in getRecentToDos" :key="todo.id">
+      <div class="card" v-for="todo in todos" :key="todo.id">
         <todo-card :todo="todo"/>
       </div>
     </div>

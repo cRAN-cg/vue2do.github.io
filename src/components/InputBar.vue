@@ -19,7 +19,8 @@ export default {
       if (this.inputText) {
         this.$store.commit('addTodo', {
           text: this.inputText,
-          timeStamp: new Date(),
+          createdTimeStamp: new Date(),
+          completed: false,
         });
       }
       this.inputText = '';
