@@ -1,10 +1,10 @@
 <template>
   <div class="menubar">
     <div class="btn-group" role="group" aria-label="Menu bar">
-      <button v-on:click="resetBoard">
+      <button type="button" class="button reset-button" v-on:click="resetBoard">
         <i class="fa fa-refresh" aria-hidden="true"></i>
       </button>
-      <button v-on:click="undoState">
+      <button type="button" class="button undo-button" v-on:click="undoState">
         <i class="fa fa-undo" aria-hidden="true"></i>
       </button>
     </div>
@@ -31,5 +31,19 @@ export default {
 <style  scoped>
 .menubar {
   margin-bottom: 16px;
+}
+
+.button {
+  background: transparent;
+  border: 0;
+  margin: 0 0 0 20px;
+  padding: 0;
+  color: white;
+  opacity: 0.3;
+}
+
+.undo-button:focus,
+.reset-button:focus {
+  outline: none
 }
 </style>

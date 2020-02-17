@@ -1,8 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <input-bar />
-    <menu-bar />
     <div>
+      <utility-container />
       <div class="card" v-for="todo in hashTaggedToDos" :key="todo.id">
         <todo-card :todo="todo"/>
       </div>
@@ -12,16 +11,14 @@
 
 <script>
 import { mapState } from 'vuex';
-import InputBar from './InputBar';
 import ToDoCard from './ToDoCard';
-import MenuBar from './MenuBar';
+import UtilityContainer from './UtilityContainer';
 
 export default {
   name: 'Dashboard',
   components: {
-    'input-bar': InputBar,
     'todo-card': ToDoCard,
-    'menu-bar': MenuBar,
+    'utility-container': UtilityContainer,
   },
   computed: mapState({
     todos: state => state.items.todo,

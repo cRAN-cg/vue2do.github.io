@@ -70,6 +70,7 @@ export default new Vuex.Store({
           completed: [],
           active: [],
         },
+        filters: [],
         nextId: uuid.v4(),
       });
     },
