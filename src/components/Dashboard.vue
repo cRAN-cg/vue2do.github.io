@@ -2,8 +2,8 @@
   <div class="dashboard-container">
     <input-bar />
     <div>
-      <div class="card" v-for="todo in getRecentToDo" :key="todo.id">
-        <h5 class="card-title">{{todo.text}}</h5>
+      <div class="card" v-for="todo in getRecentToDos" :key="todo.id">
+        <todo-card :todo="todo"/>
       </div>
     </div>
   </div>
@@ -12,20 +12,20 @@
 <script>
 import { mapState } from 'vuex';
 import InputBar from './InputBar';
+import ToDoCard from './ToDoCard';
 
 export default {
   name: 'Dashboard',
   components: {
     'input-bar': InputBar,
+    'todo-card': ToDoCard,
   },
   computed: mapState({
     todos: state => state.items.todo,
-    getRecentToDo: function getRecentToDo() {
+    getRecentToDos: function getRecentToDo() {
       return [...this.todos.reverse()];
     },
   }),
-  methods: {
-  },
 };
 </script>
 
