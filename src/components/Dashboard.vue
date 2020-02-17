@@ -3,7 +3,7 @@
     <input-bar />
     <menu-bar />
     <div>
-      <div class="card" v-for="todo in todos" :key="todo.id">
+      <div class="card" v-for="todo in hashTaggedToDos" :key="todo.id">
         <todo-card :todo="todo"/>
       </div>
     </div>
@@ -25,8 +25,19 @@ export default {
   },
   computed: mapState({
     todos: state => state.items.todo,
+    hashFilters: s => s.filters,
     getRecentToDos: function getRecentToDo() {
       return [...this.todos.reverse()];
+    },
+    hashTaggedToDos: function filterTags() {
+      if (!(this.hashFilters.length > 0)) {
+        return this.todos;
+      }
+      const newValues = [...[...this.todos].filter(todo =>
+        todo.text &&
+        [...this.hashFilters].reduce((prev, curr) => todo.text.includes(curr) && prev, true),
+      )];
+      return newValues;
     },
   }),
 };
