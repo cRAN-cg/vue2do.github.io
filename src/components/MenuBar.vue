@@ -2,7 +2,7 @@
   <div class="menubar">
     <div class="btn-group" role="group" aria-label="Menu bar">
       <button type="button" class="button reset-button" v-on:click="resetBoard">
-        <i class="fa fa-refresh" aria-hidden="true"></i>
+        <i class="fa fa-trash" aria-hidden="true"></i>
       </button>
       <button type="button" class="button undo-button" v-on:click="undoState">
         <i class="fa fa-undo" aria-hidden="true"></i>

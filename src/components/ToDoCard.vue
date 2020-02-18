@@ -1,10 +1,14 @@
 <template>
   <div class="card todo-item" @click.stop="removeToDo(todo)">
-    <div class="card-block">
-      <h5 class="card-title"></h5>
-      <span @click="addFilterTag($event)" v-html="formatToDo(todo.text)"></span>
+    <div v-bind:class="{'card-content' : true, line : todo.completed}">
+      <h5 class="card__title">
+        <span class="card__text"
+        @click="addFilterTag($event)"
+        v-html="formatToDo(todo.text)">
+        </span>
+      </h5>
+      <span class="card__date">{{getCompactDate(todo.createdTimeStamp)}}</span>
     </div>
-    {{todo.id}}
   </div>
 </template>
 
@@ -21,9 +25,9 @@ export default {
         .split(' ')
         .map((element) => {
           if (element[0] === '#') {
-            return `<span class="badge badge-info hash-tag">${element}</span>`;
+            return `<span class="card__text-word badge badge-info  hash-tag">${element} </span> `;
           }
-          return element;
+          return `<span class="card__text-word">${element} </span> `;
         })
         .join(' ');
     },
@@ -36,12 +40,48 @@ export default {
         event.stopPropagation();
       }
     },
+    getCompactDate: function getCompactDate(timeStamp) {
+      return new Date(timeStamp).getDate === new Date().getDate
+        ? 'Today'
+        : 'Some while back';
+    },
   },
 };
 </script>
 
 <style scoped>
 .card.todo-item {
+  display: flex;
+  flex-direction: column;
   background: #627180;
+}
+
+.card__title {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.card__date {
+  display: flex;
+  font-size: 0.8rem;
+}
+.card__text
+ {
+  flex-wrap: wrap;
+  text-align: justify;
+}
+
+.card__text-word::after{
+  content: "&nbsp;";
+}
+
+.card-content {
+  margin-left: 2%;
+  padding: 1%;
+}
+
+.line {
+  text-decoration: line-through;
 }
 </style>

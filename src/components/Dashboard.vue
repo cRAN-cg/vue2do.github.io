@@ -2,8 +2,8 @@
   <div class="dashboard-container">
     <div>
       <utility-container />
-      <div class="card" v-for="todo in hashTaggedToDos" :key="todo.id">
-        <todo-card :todo="todo"/>
+      <div class="card-contianer" >
+        <todo-card v-for="todo in hashTaggedToDos" :key="todo.id" :todo="todo"/>
       </div>
     </div>
   </div>
@@ -43,7 +43,10 @@ export default {
 <style scoped>
 
 .card {
+  margin-left: 10%;
+  margin-right: 10%;
   margin-bottom: 10px;
+  border-radius: 12px;
 }
 .card-block {
   padding: 15px;

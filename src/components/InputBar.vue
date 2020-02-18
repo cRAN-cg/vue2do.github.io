@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 .input-bar {
-  margin: 0 10% 10% 10%;
+  margin: 0 10px 10px 10px;
 }
 .input-bar input {
   outline: none;

@@ -8,7 +8,7 @@
       <menu-bar class="utility-container__menu" />
     </div>
     <div>
-      <filter-container />
+      <filter-container class="filter"/>
     </div>
   </div>
 </template>
@@ -33,11 +33,16 @@ export default {
 <style scoped>
 .utility-container {
   display: flex;
+  padding: 10% 10% 5% 10%;
 }
 .utility-container__input {
   flex-grow: 9;
 }
 .utility-container__menu {
   flex-grow: 1;
+}
+
+.filter {
+  padding: 10px;
 }
 </style>

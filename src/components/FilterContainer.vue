@@ -1,7 +1,8 @@
 <template>
   <div>
-    <span v-for="filter in filters" :key="filter" class="badge badge-success">
-      <span>{{filter}}</span><span @click.stop="removeFilter(filter)">&times;</span>
+    <span v-for="filter in filters" :key="filter" class="badge badge-success filter-item">
+      <span class="filter__text-content">{{filter}}</span>
+      <span class="filter__close-btn" @click.stop="removeFilter(filter)">&times;</span>
     </span>
   </div>
 </template>
@@ -23,5 +24,9 @@ export default {
 </script>
 
 <style scoped>
+.filter-item {
+  margin-right: 10px;
+  border-radius: 10px;
+}
 
 </style>
