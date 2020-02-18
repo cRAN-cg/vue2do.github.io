@@ -7,7 +7,10 @@
         v-html="formatToDo(todo.text)">
         </span>
       </h5>
-      <span class="card__date">{{getCompactDate(todo.createdTimeStamp)}}</span>
+      <div class="card-identity">
+      <span class="card-identity__date">{{getCompactDate(todo.createdTimeStamp)}}</span>
+      <span class="card-identity__id">{{todo.id}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -62,9 +65,18 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.card__date {
+.card-identity {
+  display: flex;
+}
+.card-identity__date {
   display: flex;
   font-size: 0.8rem;
+  margin-right: 10px;
+}
+.card-identity__id {
+  display: flex;
+  font-size: 0.8rem;
+  margin-right: 10px;
 }
 .card__text
  {

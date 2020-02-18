@@ -63,7 +63,7 @@ body {
 }
 
 .progress-ring-circle {
-  stroke: rgba(0, 0, 0, 0.1);
+  stroke: rgba(0, 0, 0, 0);
   stroke-width: 1;
   fill: none;
 }
