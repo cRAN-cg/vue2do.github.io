@@ -4,7 +4,6 @@
       <h5 class="card-title"></h5>
       <span @click="addFilterTag($event)" v-html="formatToDo(todo.text)"></span>
     </div>
-
     {{todo.id}}
   </div>
 </template>

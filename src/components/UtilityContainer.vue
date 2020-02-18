@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <progress-ring></progress-ring>
+    </div>
     <div class="utility-container">
       <input-bar class="utility-container__input" />
       <menu-bar class="utility-container__menu" />
@@ -14,6 +17,7 @@
 import InputBar from './InputBar';
 import MenuBar from './MenuBar';
 import FilterContainer from './FilterContainer';
+import ProgressBar from './ProgressBar';
 
 export default {
   name: 'UtilityBar',
@@ -21,6 +25,7 @@ export default {
     'input-bar': InputBar,
     'menu-bar': MenuBar,
     'filter-container': FilterContainer,
+    'progress-ring': ProgressBar,
   },
 };
 </script>

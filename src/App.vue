@@ -2,7 +2,7 @@
   <div id="todo">
     <div class="page-header">
       <h1>TODO:</h1>
-      <p>simple, offline TODO app, powered by Vue.js ❤️</p>
+      <p>simple, offline TODO app, powered by Vue.js</p>
     </div>
     <router-view/>
   </div>
